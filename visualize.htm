@@ -237,6 +237,9 @@ var pBar = document.getElementById('progress_bar');
 var pcaData = [];
 
 function updateProgress(value) {
+  
+  /* TODO: This isn't displaying correctly.
+
   if (value >= 100) {
     document.getElementById('progress_bar_div').style.display = 'none';
   } else {
@@ -246,6 +249,7 @@ function updateProgress(value) {
   pBar.value = Math.round(value);
    //console.log("Progress: " + Math.round(value));
   pBar.getElementsByTagName('strong')[0].innerHTML = Math.round(value);
+  */
 }
 
 function isNumber(n) {
