@@ -1,6 +1,6 @@
 # CyTOF Data Visualizer
 
-This is a quick implementation of PCA and Robust Sparse K-Means (RSKM). This doesn't really have to be CyTOF data, but any high dimensional dataset. Keep in mind that everything is done in your browser so choosing a huge file may take some time to analyze.
+This is a quick javascript implementation of PCA and Robust Sparse K-Means (RSKM). This doesn't really have to be CyTOF data, but any high dimensional dataset. Keep in mind that everything is done in your browser so choosing a huge file may take some time to analyze.
 
 ### Usage
 
@@ -19,6 +19,11 @@ This is a quick implementation of PCA and Robust Sparse K-Means (RSKM). This doe
 - Haven't implemented convergence testing for RSKM
 - Progress bar hasn't been implemented
 
-### References
+### References/Attribution
 
 1. Robust Sparse K-Means: http://arxiv.org/abs/1201.6082
+2. D3.js: https://github.com/mbostock/d3/
+3. Numeric.js: http://www.numericjs.com/
+4. jQuery: http://jquery.com/
+5. Underscore.js: http://underscorejs.org/
+6. jQuery Tipsy: http://onehackoranother.com/projects/jquery/tipsy/
