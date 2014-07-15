@@ -80,14 +80,14 @@ function PCA(d) {
   var num_rows = pcaData.length;
   console.log("\tPerforming PCA on " + num_rows + " samples and " + num_cols + " numeric variables...");
 
-  // Normalize dataset
+  // Scale/Normalize   dataset (Feature Scaling)
   console.log("\t\tNormalizing...");
   updateProgress(0);
   var bounds = getBounds(pcaData,1);
   for(var j = 0; j < num_cols; j++) {
     var span = bounds[j]['max'] - bounds[j]['min'];
     numeric.setBlock(pcaData, [0,j], [num_rows-1,j], 
-      numeric.div(numeric.getBlock(pcaData, [0,j], [num_rows-1,j]), span));
+      numeric.div(numeric.sub(numeric.getBlock(pcaData, [0,j], [num_rows-1,j]), bounds[j]['min']), span));
     updateProgress(j/num_cols * 25 + 25);
   }
 
@@ -104,10 +104,11 @@ function PCA(d) {
    *    2. Scores/mappings are the Us where U is left sing vec and s is corresponding sing val
    *    3. Select only first 5 PCs
    *    
-   *    - AA^T is the CovMat of A
+   *    - A^TA is the CovMat of A (when columns are variables, rows are samples)
    *    - A = USV^T
-   *    - AA^T = (USV^T)(USV^T)^T = US(V^TV)S^TU^T = US^2U^T
-   *    - Thus U has the eigenvectors of AA^T and therefore the PCs of A
+   *    - A^TA = (USV^T)^T(USV^T) = (VSU^T)(USV^T) = VS(U^TU)SV^T = VS^2V^T
+   *    - Thus V has the eigenvectors of A^TA and therefore the PCs of A
+   *    - US is the principal component scores (weighted projection of data onto the principal components)
    */
   var svd = numeric.svd(pcaData);
   var pca = numeric.dot(svd.U, numeric.diag(svd.S.slice(0,5)));
