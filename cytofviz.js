@@ -108,7 +108,7 @@ function PCA(d) {
    *    - A = USV^T
    *    - A^TA = (USV^T)^T(USV^T) = (VSU^T)(USV^T) = VS(U^TU)SV^T = VS^2V^T
    *    - Thus V has the eigenvectors of A^TA and therefore the PCs of A
-   *    - US is the principal component scores (weighted projection of data onto the principal components)
+   *    - US is the principal component scores (projection of data onto the principal components)
    */
   var svd = numeric.svd(pcaData);
   var pca = numeric.dot(svd.U, numeric.diag(svd.S.slice(0,5)));
